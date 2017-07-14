@@ -7,6 +7,7 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.TextField;
@@ -31,14 +32,14 @@ public class MyUI extends UI {
 	private TapeteForm tapete2 = new TapeteForm(this);
 	private TapeteForm tapete3 = new TapeteForm(this);
 	private TapeteForm tapete4 = new TapeteForm(this);
+
 	
 	private VerticalLayout layout = new VerticalLayout();
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-    	
-        Baraja baraja = new Baraja();
-        
+    	Baraja baraja = new Baraja();
+       
         Tapete manoTapete1 = baraja.getTapete();
         Tapete manoTapete2 = baraja.getTapete();
         Tapete manoTapete3 = baraja.getTapete();
@@ -62,7 +63,7 @@ public class MyUI extends UI {
         sample.addTab(tapete4, "Jugador4");
         
         //layout.addComponents(tapete1, tapete2, tapete3, tapete4);
-        layout.addComponent(sample);
+        layout.addComponents(sample);
         
         setContent(layout);
         

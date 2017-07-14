@@ -85,11 +85,11 @@ public class Tapete {
 		
 		String mensaje = "No hay pares";
 		
-		for (int i = 0, j = i + 1 ; i< listaCartasTapete1.size(); i++) {
+		for (int i = 0 ; i< listaCartasTapete1.size(); i++) {
 			int numero1 = listaCartasTapete1.get(i).getNumero().getNumeroReal();
-			int numero2 = listaCartasTapete1.get(j).getNumero().getNumeroReal();
+			int numero2 = listaCartasTapete1.get(i+1).getNumero().getNumeroReal();
 			
-			if (numero1 != numero2) {
+			if (numero1 == numero2) {
 				mensaje = "hay pares";
 				
 				break;
@@ -99,8 +99,11 @@ public class Tapete {
 	}
 	
 	public int juego(Tapete tapete) {
-
+		
 		int resultado = tapete.getPuntuacion();
+		if(resultado>30) {
+			
+		}
 		return resultado;
 	}
 	

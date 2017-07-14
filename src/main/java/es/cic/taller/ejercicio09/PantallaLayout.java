@@ -1,5 +1,7 @@
 package es.cic.taller.ejercicio09;
 
+import com.vaadin.server.Page;
+import com.vaadin.server.Page.Styles;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -23,13 +25,20 @@ public class PantallaLayout extends GridLayout {
 	private Baraja baraja;
 	
 	public PantallaLayout(MyUI myUI, Baraja baraja) {
+		// fondo en verde
+		final Styles styles = Page.getCurrent().getStyles();
+		styles.add(".v-gridlayout {background-color: green}");
+		
+		
+		this.setHideEmptyRowsAndColumns(false);
+		
 		this.myUI = myUI;
 		this.baraja = baraja;
 		Tapete manoTapete1 = baraja.getTapete();
 		
 		tapete1 = new TapeteForm(myUI);
 		tapete1.setTapete(manoTapete1);
-
+		
 		
 		Tapete manoTapeteDorso = new Tapete();
 		manoTapeteDorso.setCarta1(Carta.getDorso());
@@ -49,7 +58,7 @@ public class PantallaLayout extends GridLayout {
 		setRows(4);
 		setColumns(4);
 		
-		VerticalLayout verticalLayout = new VerticalLayout();
+		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		Button botonMus = new Button("Mus");
 		botonMus.addClickListener(e-> {
 			 
@@ -58,14 +67,16 @@ public class PantallaLayout extends GridLayout {
 		botonMus.addClickListener(e-> {
 			 
 		});
-		verticalLayout.addComponents(botonMus, botonNoMus);
+		horizontalLayout.addComponents(botonMus, botonNoMus);
 		
-		addComponent(tapete1, 1, 2);
-		addComponent(verticalLayout, 2, 2);
+		VerticalLayout verticalLayout = new VerticalLayout();
+		verticalLayout.addComponents(tapete1,horizontalLayout);
+		
+//		addComponent(tapete1, 1, 2);
+		addComponent(verticalLayout, 1, 2);
 		addComponent(tapete2, 1, 0);
 		addComponent(tapete3, 0, 1);
 		addComponent(tapete4, 3, 1);
-//		addComponent(botonMus,1,3);
 	}
 	
 	
